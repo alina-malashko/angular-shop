@@ -1,0 +1,42 @@
+.card {
+  border: 5px solid #cbf7f7;
+  width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  font-size: 17px;
+  color: #4d5e5e;
+  & input[type='text'], & input[type='url'], & input[type='number'] {
+    border: #b1b1b1 2px solid;
+    color: #4d5e5e;
+    padding: 5px;
+    margin: 5px;
+  }
+  & span {
+    color: rgb(255, 137, 137);
+  }
+}
+
+button {
+  border: #81c4c4 2px solid;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  padding: 15px 30px;
+  color: #81c4c4;
+  font-weight: bold;
+  background-color: transparent;
+  transition: all 300ms ease-out;
+  margin: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #81c4c4;
+    color: white;
+  }
+  &:disabled {
+    border: #b1b1b1 2px solid;
+    color: #b1b1b1;
+  }
+  &:disabled:hover {
+    background-color: #b1b1b1;
+    color: white;
+  }
+}

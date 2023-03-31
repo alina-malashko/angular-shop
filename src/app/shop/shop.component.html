@@ -1,0 +1,23 @@
+<table class='shop'>
+  <caption class='shop__caption'>{{shopName}}</caption>
+  <tbody>
+    <app-product
+      *ngFor='let product of products'
+      [product]='product'
+      [selectedRow]='selectedRow'
+      [buttonDeleteState]='buttonDeleteState'
+      [buttonEditState]='buttonEditState'
+      (highlight)='highlight($event)'
+      (delete)='delete($event)'
+      (edit)='edit($event)'
+    />
+  </tbody>
+</table>
+<app-card
+  [card]='card'
+  (cancelCard)='cancelCard()'
+  (addNewProduct)='addNewProduct()'
+  (addProduct)='addProduct($event)'
+  (editProduct)='editProduct($event)'
+  (editButtonState)='editButtonState($event)'
+/>

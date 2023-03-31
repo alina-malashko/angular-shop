@@ -1,0 +1,12 @@
+<tr [class.selected]='selectedRow === product.code' (click)='highlightItem()'>
+  <td>{{product.product}}</td>
+  <td>{{product.price | currency}}</td>
+  <td>
+      <img alt='product' [src]='product.photo' />
+  </td>
+  <td>{{product.balance}} pieces</td>
+  <td>
+      <button (click)='deleteItem($event)' [disabled]='buttonDeleteState'>Delete</button>
+      <button (click)='editItem($event)' [disabled]='buttonEditState'>Edit</button>
+  </td>
+</tr>

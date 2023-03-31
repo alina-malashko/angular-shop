@@ -1,0 +1,105 @@
+<button id='sdfghj' *ngIf='card.state === "default"' (сlick)="addNewItem()">New Product</button>
+<div *ngIf='card.state === "item"'>
+  <button (сlick)='addNewItem()'>New Product</button>
+  <div class='card'>
+    <h2>{{card.product}}</h2>
+    <p>{{card.price | currency}}</p>
+    <p>{{card.balance}}</p>
+    <img alt='product' [src]='card.photo' />
+  </div>
+</div>
+<form *ngIf='card.state === "edit"' [formGroup]='editForm' novalidate (ngSubmit)='editItem()' class='card'>
+    <h2>Edit existing Product</h2>
+    <p>ID: {{card.code}}</p>
+    <label>Name:</label>
+    <input
+      type='text'
+      name='name'
+      formControlName='name'
+      (change)='setEditButtonState()'
+    />
+    <span *ngIf='editForm.controls["name"].invalid && editForm.controls["name"].touched'>{{nameError}}</span>
+    <br>
+    <label>Price:</label>
+    <input
+      type='number'
+      name='price'
+      formControlName='price'
+    />
+    <span *ngIf='editForm.controls["price"].invalid && editForm.controls["price"].touched'>{{priceError}}</span>
+    <br>
+    <label>Photo:</label>
+    <input
+      type='url'
+      name='photo'
+      formControlName='photo'
+    />
+    <span *ngIf='editForm.controls["photo"].invalid && editForm.controls["photo"].touched'>{{priceError}}</span>
+    <br>
+    <label>Stock balance:</label>
+    <input
+      type='number'
+      name='balance'
+      formControlName='balance'
+    />
+    <span *ngIf='editForm.controls["balance"].invalid && editForm.controls["balance"].touched'>{{balanceError}}</span>
+    <div>
+      <input
+        type='submit'
+        value='Save'
+        [disabled]='editForm.controls["name"].invalid || editForm.controls["price"].invalid || editForm.controls["photo"].invalid || editForm.controls["balance"].invalid'
+      />
+      <input
+        type='reset'
+        value='Cancel'
+        (click)='cancel()'
+      />
+    </div>
+</form>
+<form *ngIf='card.state === "add"' [formGroup]='addForm' novalidate (ngSubmit)='addItem()' class='card'>
+  <h2>Add new product</h2>
+  <p>ID: {{card.newId}}</p>
+  <label>Name:</label>
+  <input
+    type='text'
+    name='name'
+    formControlName='name'
+  />
+  <span *ngIf='addForm.controls["name"].invalid || addForm.controls["name"].touched'>{{nameError}}</span>
+  <br>
+  <label>Price:</label>
+  <input
+    type='number'
+    name='price'
+    formControlName='price'
+  />
+  <span *ngIf='addForm.controls["price"].invalid || addForm.controls["price"].touched'>{{priceError}}</span>
+  <br>
+  <label>Photo:</label>
+  <input
+    type='url'
+    name='photo'
+    formControlName='photo'
+  />
+  <span *ngIf='addForm.controls["photo"].invalid || addForm.controls["photo"].touched'>{{priceError}}</span>
+  <br>
+  <label>Stock balance:</label>
+  <input
+    type='number'
+    name='balance'
+    formControlName='balance'
+  />
+  <span *ngIf='addForm.controls["balance"].invalid || addForm.controls["balance"].touched'>{{balanceError}}</span>
+  <div>
+    <input
+      type='submit'
+      value='Add'
+      [disabled]='addForm.invalid'
+    />
+    <input
+      type='reset'
+      value='Cancel'
+      (click)='cancel()'
+    />
+  </div>
+</form>
